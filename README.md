@@ -2,16 +2,17 @@
 
 The previous projects and midterm focused on earlier steps of a data analytic project such as forming questions and sampling data. The next two projects will focus on the latter steps, directly working with data and communicating findings.
 
-The goal of Project 3 is to perform an analysis with real-life published data. Even though you have access to the paper which originally analyzed this data, please do not consult it until Project 4. For Project 3, please only use the descriptions and instructions that I have provided to make analytic decisions.
+The goal of Project 3 is to perform an analysis with real-life published data. Even though you have access to the paper which originally analyzed this data, please do not consult it until Project 4. For Project 3, please only use the descriptions and instructions which I have provided to make analytic decisions.
 
 ## Logistics
 
 ### Individual or Group Work
+
 You may work individually or in groups of 2-3 people. Please email the instructor with your decision as soon as possible so repositories can be made on GitHub that reflect the group structure.
 
-
 ### Submission
-All work for Project 3 should be done in `.Rmd` files, utilizing code blocks for all code. If working in a group, a single `.Rmd` file submission to the group repository is acceptable, but please provide a breakdown of how each group member contributed to the submission (as a `.pdf`, `.docx`, or text section in the `.Rmd` itself). Groups members will receive the same grade as long as contributions are fair or nearly equal.   
+
+All work for Project 3 should be done in `.Rmd` files, utilizing code blocks for all code. If working in a group, a single `.Rmd` file submission to the group repository is acceptable, but please provide a breakdown of how each group member contributed to the submission (as a `.pdf`, `.docx`, or text section in the `.Rmd` itself). (Additionally, if a group member has any comments or concerns which they wish to remain anonymous, they may email the professor.) Groups members will receive the same grade as long as contributions are fair or nearly equal.   
 
 ### Grading
 
@@ -23,7 +24,7 @@ I will be providing links to resources relevant to the analysis steps I'm asking
 
 ## Project Questions
 
-### Study Question 1 (6 Possible points)
+### Analysis 1 (6 Possible points)
 
 #### Question
 
@@ -41,7 +42,7 @@ I will be providing links to resources relevant to the analysis steps I'm asking
 
 --------------------------------------------------------------------------------
 
-### Study Question 2 (4 possible points)
+### Analysis 2 (4 possible points)
 
 #### Question
 
@@ -59,7 +60,7 @@ I will be providing links to resources relevant to the analysis steps I'm asking
 
 --------------------------------------------------------------------------------
 
-### Study Question 3 (8 Possible points)
+### Analysis 3 (8 Possible points)
 
 #### Question
 
@@ -106,17 +107,27 @@ The `X` column is an ID for the proband. The `Condition` column specifies which 
 
 #### What we want from the plot
 
+We want a plot that shows the paired Pre and Post IgA concentrations, separating the conditions (control and stress) into different subpanels.
+
+Aesthetics
+* "Subpanels" for the conditions
+  * You can either manually make different plots and just keep them separate
+  * You can manually make different plots but combine them as subpanels in the same plot (packages like `patchwork` are great for this)
+  * You can use `+ facet_wrap(~Condition)` in order for ggplot to automatically make subpanels for you.
+* The plot should have relevant axis labels and title.
+* The plot *does not need* to have asterisks or any other means of reporting the result of hypothesis tests.  
 
 
-#### General outline of how you'll want to tidy the data for plotting
+#### General outline of how you'll want to tidy the data for original plotting with ggplot2
 
-* `pivot_longer`
-* set factor level of new column (otherwise it'll plot post data before the pre data)
+* Make a longer dataframe with the `tidyr` `pivot_longer` function such that the values in the `Pre` and `Post` columns are stacked together in a column named `value`. So there's one column (`value`) with the concentrations (or Y values for the plots) and a new column `Timepoint` which specifies if the row is from the `Pre` or `Post` timepoint (and then you can use the new `Timepoint` column for the X values for the plot).
+* Because ggplot will plot the X values alphabetically (plotting post data before pre data), you'll have to set the factor "levels" of the new `Timepoint` column
+
 
 #### Steps
 
 1. Make a plot of the data *(2 points)*
-  * include `group` argument in `aes`
+  * include `x`, `y`, and `group` arguments in `aes`. The `group` argument should point to the `X` or proband ID column so that ggplot knows which Y values go to together.
   * `facet_wrap` would be helpful to separate the conditions (Control and Stress)
 2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(4 points)*
   * For each condition....
@@ -131,6 +142,22 @@ The `X` column is an ID for the proband. The `Condition` column specifies which 
 3. Write a paragraph explaining the analysis that was done and the results you observe *(2 points)*
 
 #### Helpful Resources
+
+##### R Packages you'll need
+* `tidyr`
+* `ggplot2`
+* `outliers`
+
+##### R packages you may want
+* `patchwork`
+
+##### Tidying data and plotting
+* [pivot_longer](https://tidyr.tidyverse.org/reference/pivot_longer.html)
+* [factor setting](https://stackoverflow.com/questions/2375587/reorder-levels-of-a-factor-without-changing-order-of-values)
+* [facet_wrap](http://zevross.com/blog/2019/04/02/easy-multi-panel-plots-in-r-using-facet_wrap-and-facet_grid-from-ggplot2/)
+* [facet_wrap 2](http://www.cookbook-r.com/Graphs/Facets_(ggplot2)/)
+* [plot labels](http://www.sthda.com/english/wiki/ggplot2-title-main-axis-and-legend-titles)
+* [patchwork package]((https://patchwork.data-imaginist.com/index.html))
 
 ##### Assessing Normality
 * [general info](https://www.sheffield.ac.uk/polopoly_fs/1.885202!/file/95_Normality_Check.pdf)
