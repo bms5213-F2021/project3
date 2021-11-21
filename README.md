@@ -121,14 +121,17 @@ Aesthetics
 #### General outline of how you'll want to tidy the data for original plotting with ggplot2
 
 * Make a longer dataframe with the `tidyr` `pivot_longer` function such that the values in the `Pre` and `Post` columns are stacked together in a column named `value`. So there's one column (`value`) with the concentrations (or Y values for the plots) and a new column `Timepoint` which specifies if the row is from the `Pre` or `Post` timepoint (and then you can use the new `Timepoint` column for the X values for the plot).
-* Because ggplot will plot the X values alphabetically (plotting post data before pre data), you'll have to set the factor "levels" of the new `Timepoint` column
+  * You can tell the `pivot_longer` function to stack the values in the `Pre` and `Post` columns using the `cols` argument
+  * `pivot_longer` will automatically name the new column stacking these values `value`
+  * You can tell the `pivot_longer` function the name of the new column, specifiying timpepoint using the `names_to` argument
+* Because `ggplot` will plot the X values alphabetically (plotting `Post` data before `Pre` data), you'll have to set the "factor levels" of the new `Timepoint` column
 
 
 #### Steps
 
-1. Make a plot of the data *(2 points)*
-  * include `x`, `y`, and `group` arguments in `aes`. The `group` argument should point to the `X` or proband ID column so that ggplot knows which Y values go to together.
-  * `facet_wrap` would be helpful to separate the conditions (Control and Stress)
+1. Make a plot of the data using the new longer dataframe *(2 points)*
+  * In `aes` for `ggplot`, include `x`, `y`, and `group` arguments. The `group` argument should point to the `X` or proband ID column so that `ggplot` knows which Y values go together.
+  * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
 2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(4 points)*
   * For each condition....
     * if the assumptions are met
@@ -139,7 +142,7 @@ Aesthetics
       * re-plot/repeat step 1 with data without outlier
       * re-check assumptions on data without outlier
       * perform hypothesis test
-3. Write a paragraph explaining the analysis that was done and the results you observe *(2 points)*
+3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
 
 #### Helpful Resources
 
