@@ -4,23 +4,34 @@ The previous projects and midterm focused on earlier steps of a data analytic pr
 
 The goal of Project 3 is to perform an analysis with real-life published data. Even though you have access to the paper which originally analyzed this data, please do not consult it until Project 4. For Project 3, please only use the descriptions and instructions which I have provided to make analytic decisions.
 
+Project 3 focuses on analysis of data and communication of the analysis for 3 data files/study questions. For each of these 3 files, there are at least 3 broad steps (2 analysis, 1 communication).  
+
 ## Logistics
 
 ### Individual or Group Work
 
-You may work individually or in groups of 2-3 people. Please email the instructor with your decision as soon as possible so repositories can be made on GitHub that reflect the group structure.
+You may work individually or in groups of 2-3 people. Please email the instructor with your decision as soon as possible after Thanksgiving Break so repositories can be made on GitHub that reflect the group structure.
 
 ### Submission
 
-All work for Project 3 should be done in `.Rmd` files, utilizing code blocks for all code. If working in a group, a single `.Rmd` file submission to the group repository is acceptable, but please provide a breakdown of how each group member contributed to the submission (as a `.pdf`, `.docx`, or text section in the `.Rmd` itself). (Additionally, if a group member has any comments or concerns which they wish to remain anonymous, they may email the professor.) Groups members will receive the same grade as long as contributions are fair or nearly equal.   
+* All work for Project 3 should be done in `.Rmd` files which are knit to `.html` files prior to submission.
+  * Utilize code blocks for all code.
+  * Comments and all specified communication/writing steps of the project should also be in the `.Rmd` file(s).
+  * Turn in both the `.Rmd` and the knit `.html` files to the repository.
+  * If working in a group, a single `.Rmd` and knit `.html` file submission to the group repository is acceptable.
+* Please also provide a breakdown of how each group member contributed to the submission.
+  * This may be a `.pdf`, `.docx`, or text section in the `.Rmd`/`.html` itself.
+  * Additionally, if a group member has any comments or concerns which they wish to remain anonymous, they may email the professor.
 
-### Grading
+### Grading & Assessment Strategy
 
-Project 3 is worth 15 points. Project 3 focuses on analysis of data and communication of the analysis for 3 data files/study questions. For each of these 3 files, there are at least 3 steps (2 analysis, 1 communication). The number of available points for each step is noted.  The total number of available points is greater than 15, but the project will be graded out of 15 points.
+* Project 3 will be assessed only by the professor and based solely upon the `.Rmd` and `.html` uploads to GitHub.
+* Project 3 is worth 15 points. The total number of available points is greater than 15, but the project will be graded out of 15 points.
+* Groups members will receive the same grade as long as contributions are fair or nearly equal.
 
 ### Resources and analysis choices
 
-I will be providing links to resources relevant to the analysis steps I'm asking you to perform. Make informed decisions using these resources.
+I will be providing links to resources relevant to the analysis steps I'm asking you to perform. Make informed decisions using these resources. Again, please do not consult the source paper to decide what you want to do.
 
 ## Project Questions
 
