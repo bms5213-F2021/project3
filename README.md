@@ -23,7 +23,7 @@ I will be providing links to resources relevant to the analysis steps I'm asking
 
 ## Project Questions
 
-### Study Question 1 (3 Possible points)
+### Study Question 1 (6 Possible points)
 
 #### Question
 
