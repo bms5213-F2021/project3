@@ -27,7 +27,7 @@ You may work individually or in groups of 2-3 people. Please email the instructo
 
 * Project 3 will be assessed only by the professor and based solely upon the `.Rmd` and `.html` uploads to GitHub.
 * Project 3 is worth 15 points. The total number of available points is greater than 15, but the project will be graded out of 15 points.
-* Groups members will receive the same grade as long as contributions are fair or nearly equal.
+* Groups members will receive the same grade as long as contributions are fair or nearly equal or group members worked together.
 
 ### Resources and analysis choices
 
@@ -36,8 +36,6 @@ I will be providing links to resources relevant to the analysis steps I'm asking
 ## Project Questions
 
 ### Analysis 1 (6 Possible points)
-
-#### Question
 
 #### File with data
 
@@ -79,17 +77,68 @@ The data has 5 columns (variables) and 32 rows (probands).
 
 You have two overall sets or conditions of data (Control and Stress/experimental). Within each set, there are two further subsets of data (male or female). Then for each proband or individual (which is either control or stress and then either male or female), you have two measurements specific to that proband. The first is the fecal supernatant concentration of IgA as measured by ELISA. The second is the percentage of IgA+ fecal bacteria as measured following antibody staining and flow cytometry.
 
+#### Question
+
+For each set of conditions and sexes, is there a linear positive correlation between the concentration of fecal IgA and the proportion of IgA+ bacteria?
+
+#### What we want from the plot
+
+We want a plot that shows the correlation between IgA concentrations and proportion of IgA+ bacteria, separating the conditions (control and stress) and sexes (male and female) into different subpanels (e.g., 4 subpanels: (1) female control, (2) female stress, (3) male control, (4) male stress).
+
+Aesthetics
+* "Subpanels" for the conditions and sexes
+  * You can either manually make different plots and just keep them separate
+  * You can manually make different plots but combine them as subpanels in the same plot (packages like `patchwork` are great for this)
+  * You can use `+ facet_wrap(Sex~Condition)` in order for ggplot to automatically make subpanels for you.
+* The plot should have relevant axis labels and title.
+* The plot *does not need* to have asterisks, but by using the `stat_cor()` function from the `ggpubr` package, it will communicate the results of Pearson R correlation tests.
+
 #### General outline of how you'll want to tidy the data
+
+In order to check the assumptions of approximate normality, you may need to check the approximate normality of a variable after a natural logarithm (ln) transformation. Therefore, for the two variables `conc_fecal_iga` and `prop_bound_bac`, you should make new columns that are the ln(value + 1) (the +1 is to avoid taking a natural log of 0. This is allowed if you add it to all the values). You can either do this with the `log()` function, and adding a constant value like 1 *before* taking the ln. You could alternatively use the `log1p()` function which will add 1 before taking the ln.
 
 #### Steps of analysis
 
+1. Plot *(2 points)*
+  * In `aes` for `ggplot`, include `x` and `y` arguments.
+  * `facet_wrap()` would be helpful to separate the conditions and sexes into subpanels
+  * `geom_point()` will scatter the points
+  * `geom_smooth()` can be used to draw a straight line (but this isn't necessary); If used, consider setting the `method` and `se` arguments to have a linear model, and to turn off the shading respectively
+2. Find the correlation between the variables  *(2 points)*
+  * Check the assumptions for Pearson R correlation for each subplot. (Primarily, are both the variables being considered approximately normal?)
+    * If you believe that multiple pieces of evidence support that each variable being considered is approximately normal (or can be cleaned/transformed with a natural logarithm to be approximately normal), proceed with the correlation using Pearson's R, and be sure to justify your choices in your write up in step 3
+    * If you don't think that multiple pieces of evidence support the assumption of approximate normality, then proceed with the correlation using Kendall's Tau.  
+  * You can run the correlation manually using the `cor()` and `cor.test()` functions for each subplot and add annotations to plots (not recommended) or you can use `+ stat_cor()` (a function from the `ggpubr` package) (recommended)
+3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
+
 #### Helpful Resources
+
+##### R Packages you'll need
+* `ggplot2`
+* `ggpubr`
+
+##### R packages you may want
+* `patchwork`
+
+##### Tidying data and plotting
+* [ggpubr and stat_cor](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html)
+* [facet_wrap](http://zevross.com/blog/2019/04/02/easy-multi-panel-plots-in-r-using-facet_wrap-and-facet_grid-from-ggplot2/)
+* [facet_wrap 2](http://www.cookbook-r.com/Graphs/Facets_(ggplot2)/)
+* [plot labels](http://www.sthda.com/english/wiki/ggplot2-title-main-axis-and-legend-titles)
+* [patchwork package](https://patchwork.data-imaginist.com/index.html)
+
+##### Assessing Normality
+* [general info](https://www.sheffield.ac.uk/polopoly_fs/1.885202!/file/95_Normality_Check.pdf)
+* [ggplot Q-Q plots](https://ggplot2.tidyverse.org/reference/geom_qq.html)
+* [base R Q-Q plots](https://www.dummies.com/programming/r/how-to-use-quantile-plots-to-check-data-normality-in-r/)
+* [Shapiro-Wilk tests](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/shapiro.test.html)
+
+#### Types of Correlation metrics
+* [R, tau, and rho](http://www.sthda.com/english/wiki/wiki.php?id_contents=7307)
 
 --------------------------------------------------------------------------------
 
-### Analysis 2 (4 possible points)
-
-#### Question
+### Analysis 2 (6 possible points)
 
 #### File with data
 
@@ -141,21 +190,60 @@ You have two overall sets or conditions of data (Control and Stress/experimental
 The possible scores are 0, 1, 2, 3, & 4. And the scoring system is described as follows:
 > 0-no injury, 1-mild separation of the lamina propria from the muscularis mucosa, 2-moderate separation, 3-severe separation and/or edema in submucosa, 4-transmural injury.
 
+#### Question
+
+For each sex of pup, is there a difference in the distribution of injury scores between pups born from the mothers in control conditions and pups born from mothers in the stress conditions?
+
+#### What we want from the plot
+
+We want a plot that shows the injury scores of pups born from mothers from each condition (control and sex), separating the pup sexes (female and male) into different subpanels (e.g., 2 subpanels).
+
+Aesthetics
+* "Subpanels" for the sexes
+  * You can either manually make different plots and just keep them separate
+  * You can manually make different plots but combine them as subpanels in the same plot (packages like `patchwork` are great for this)
+  * You can use `+ facet_wrap(~Sex)` in order for ggplot to automatically make subpanels for you.
+* The plot should have relevant axis labels and title.
+* The plot *does not need* to have asterisks or any other means of reporting the result of hypothesis tests.
+* You can find and report medians and quantiles, but no need to add them to the plot
+
 #### General outline of how you'll want to tidy the data
+
+You won't need to do any tidying for this analysis.
 
 #### Steps of analysis
 
+1. Plot *(2 points)*
+  * In `aes` for `ggplot`, include `x` and `y` arguments.
+  * the `geom_point()` function will add points for each score
+  * the `geom_jitter(width=0.1)` function can be used to separate the points out within each condition
+  * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
+2. Hypothesis Tests *(2 points)*
+  * Given what you know about the type of data these injury scores are, and the resources provided below, decide on an appropriate hypothesis test and apply it to the data for each sex.
+3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
+
 #### Helpful Resources
 
+##### R packages you'll need
+* `ggplot2`
+
+##### R packages you may want
+* `patchwork`
+
+##### Plotting
+* [facet_wrap](http://zevross.com/blog/2019/04/02/easy-multi-panel-plots-in-r-using-facet_wrap-and-facet_grid-from-ggplot2/)
+* [facet_wrap 2](http://www.cookbook-r.com/Graphs/Facets_(ggplot2)/)
+* [plot labels](http://www.sthda.com/english/wiki/ggplot2-title-main-axis-and-legend-titles)
+* [patchwork package](https://patchwork.data-imaginist.com/index.html)
+
+##### Hypothesis Testing
+* [Ordinal data](https://www.sheffield.ac.uk/polopoly_fs/1.885207!/file/99_Mann_Whitney_U_Test.pdf)
+* [t-test and Wilcoxon-rank-sum](https://data.library.virginia.edu/the-wilcoxon-rank-sum-test/)
+* [mann whitney and wilcoxon-rank sum 1](http://www.r-tutor.com/elementary-statistics/non-parametric-methods/mann-whitney-wilcoxon-test)
+* [mann whitney and wilcoxon-rank sum 2](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html)
 --------------------------------------------------------------------------------
 
-### Analysis 3 (8 Possible points)
-
-#### Question
-
-For each condition of data (control and stress), does the concentration of IgA in fecal supernatants from stool samples increase from Embryonic Day 7 to Embryonic Day 20?  
-
-[e.g. Do we observe a statistically significant increase in the mean IgA concentration of post-stress data (E20) compared to pre-stress data (E7) within each condition?]
+### Analysis 3 (7 Possible points)
 
 #### File with data
 
@@ -192,6 +280,12 @@ The `X` column is an ID for the proband. The `Condition` column specifies which 
 
 In general, you have two overall sets or conditions of data (Control and Stress/experimental). Within each set, there is **paired** data where the observations you have are two-dimensional. In one dimension you have individuals (who are independent of each other). In this specific case, the second dimension of the data corresponds to the observations for each individual. These observations are taken pre- and post- __ ; therefore, the pre- and post- observations are not independent of each other because they stem from the same individual. With paired data we want to treat each pair as a group, keeping the related info connected.
 
+#### Question
+
+For each condition of data (control and stress), does the concentration of IgA in fecal supernatants from stool samples increase from Embryonic Day 7 to Embryonic Day 20?  
+
+[e.g. Do we observe a statistically significant increase in the mean IgA concentration of post-stress data (E20) compared to pre-stress data (E7) within each condition?]
+
 #### What we want from the plot
 
 We want a plot that shows the paired Pre and Post IgA concentrations, separating the conditions (control and stress) into different subpanels.
@@ -218,8 +312,10 @@ Aesthetics
 
 1. Make a plot of the data using the new longer dataframe *(2 points)*
   * In `aes` for `ggplot`, include `x`, `y`, and `group` arguments. The `group` argument should point to the `X` or proband ID column so that `ggplot` knows which Y values go together.
+  * `+ geom_line()` will draw the lines
+  * `+ geom_point()` will draw the points (if you want; this isn't necessary)
   * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
-2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(4 points)*
+2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(3 points)*
   * For each condition....
     * if the assumptions are met
       * perform hypothesis test
