@@ -1,41 +1,61 @@
-# Project 3
+# Projects 3 & 4
 
 The previous projects and midterm focused on earlier steps of a data analytic project such as forming questions and sampling data. The next two projects will focus on the latter steps, directly working with data and communicating findings.
 
 The goal of Project 3 is to perform an analysis with real-life published data. Even though you have access to the paper which originally analyzed this data, please do not consult it until Project 4. For Project 3, please only use the descriptions and instructions which I have provided to make analytic decisions.
 
-Project 3 focuses on analysis of data and communication of the analysis for 3 data files/study questions. For each of these 3 files, there are at least 3 broad steps (2 analysis, 1 communication).  
+Project 3 focuses on analysis of data and communication of the analysis for 3 data files/study questions. For each of these 3 files, there are at least 3 broad steps (2 analysis, 1 communication).
+
+The goal of project 4 is to compare and contrast the analysis choices that you made and the conclusions that you reached, specifically in regards to the original, published analysis: *"Prenatal stress increases IgA coating of offspring microbiota and exacerbates necrotizing enterocolitis-like injury in a sex-dependent manner"*.  
 
 ## Logistics
 
-### Individual or Group Work
+**Due: Dec 11, 11 AM CDT**
+
+### Project 3
+#### Individual or Group Work
 
 You may work individually or in groups of 2-3 people. Please email the instructor with your decision as soon as possible after Thanksgiving Break so repositories can be made on GitHub that reflect the group structure.
 
-### Submission
+#### Submission
 
 * All work for Project 3 should be done in `.Rmd` files which are knit to `.html` files prior to submission.
   * Utilize code blocks for all code.
   * Comments and all specified communication/writing steps of the project should also be in the `.Rmd` file(s).
   * Turn in both the `.Rmd` and the knit `.html` files to the repository.
   * If working in a group, a single `.Rmd` and knit `.html` file submission to the group repository is acceptable.
-* Please also provide a breakdown of how each group member contributed to the submission.
-  * This may be a `.pdf`, `.docx`, or text section in the `.Rmd`/`.html` itself.
+* Please also provide a *brief* breakdown of how each group member contributed to the submission.
+  * This may be a `.pdf`, `.docx`, `.pages`, (etc.), or text section in the `.Rmd`/`.html` itself.
   * Additionally, if a group member has any comments or concerns which they wish to remain anonymous, they may email the professor.
 
-### Grading & Assessment Strategy
+#### Grading & Assessment Strategy
 
 * Project 3 will be assessed only by the professor and based solely upon the `.Rmd` and `.html` uploads to GitHub.
-* Project 3 is worth 15 points. The total number of available points is greater than 15, but the project will be graded out of 15 points.
+* Project 3 is worth 20 points. The total number of available points is greater than 20, but the project will be graded out of 20 points.
 * Groups members will receive the same grade as long as contributions are fair or nearly equal or group members worked together.
 
-### Resources and analysis choices
+#### Resources and analysis choices
 
 I will be providing links to resources relevant to the analysis steps I'm asking you to perform. Make informed decisions using these resources. Again, please do not consult the source paper to decide what you want to do.
 
-## Project Questions
+### Project 4
 
-### Analysis 1 (6 Possible points)
+Project 4 must be individual work.
+
+### Submission
+
+* Project 4 submissions may be uploaded to Canvas or the Project 3 GitHub repositories. If you upload to GitHub, feel free to enter the GitHub repository URL as your submission to Canvas
+* Project 4 should not exceed 3 pages.
+* Submissions may be a `.pdf`, `.docx`, `.pages`, or an `.Rmd`/`.html` file (etc.)
+
+### Grading and assessment strategy
+
+* Project 4 will be assessed only by the professor and based solely on the uploads to GitHub or Canvas
+* Project 4 is worth 10 points.  
+
+## Project 3 Questions
+
+### Analysis 1 (8 Possible points)
 
 #### File with data
 
@@ -99,17 +119,21 @@ In order to check the assumptions of approximate normality, you may need to chec
 
 #### Steps of analysis
 
-1. Plot *(2 points)*
+1. Plot *(3 points)*
   * In `aes` for `ggplot`, include `x` and `y` arguments.
   * `facet_wrap()` would be helpful to separate the conditions and sexes into subpanels
   * `geom_point()` will scatter the points
   * `geom_smooth()` can be used to draw a straight line (but this isn't necessary); If used, consider setting the `method` and `se` arguments to have a linear model, and to turn off the shading respectively
-2. Find the correlation between the variables  *(2 points)*
+2. Find the correlation between the variables  *(3 points)*
   * Check the assumptions for Pearson R correlation for each subplot. (Primarily, are both the variables being considered approximately normal?)
     * If you believe that multiple pieces of evidence support that each variable being considered is approximately normal (or can be cleaned/transformed with a natural logarithm to be approximately normal), proceed with the correlation using Pearson's R, and be sure to justify your choices in your write up in step 3
     * If you don't think that multiple pieces of evidence support the assumption of approximate normality, then proceed with the correlation using Kendall's Tau.  
   * You can run the correlation manually using the `cor()` and `cor.test()` functions for each subplot and add annotations to plots (not recommended) or you can use `+ stat_cor()` (a function from the `ggpubr` package) (recommended)
-3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
+3. Write 1-3 paragraphs *(2 points)*
+  * stating the analysis question (original question posed by the professor for this data file/analysis)
+  * explaining the analysis that was done
+  * explaining the results you observe
+  * explaining how the analysis and results answer the original question posed by the professor (for this data file/analysis)
 
 #### Helpful Resources
 
@@ -136,9 +160,12 @@ In order to check the assumptions of approximate normality, you may need to chec
 #### Types of Correlation metrics
 * [R, tau, and rho](http://www.sthda.com/english/wiki/wiki.php?id_contents=7307)
 
+##### Communication
+* [Jeff Leek -- Advanced Data Science](http://jtleek.com/ads2020/week-9.html#week-9-learning-objectives)
+
 --------------------------------------------------------------------------------
 
-### Analysis 2 (6 possible points)
+### Analysis 2 (8 possible points)
 
 #### File with data
 
@@ -213,14 +240,18 @@ You won't need to do any tidying for this analysis.
 
 #### Steps of analysis
 
-1. Plot *(2 points)*
+1. Plot *(3 points)*
   * In `aes` for `ggplot`, include `x` and `y` arguments.
   * the `geom_point()` function will add points for each score
   * the `geom_jitter(width=0.1)` function can be used to separate the points out within each condition
   * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
-2. Hypothesis Tests *(2 points)*
+2. Hypothesis Tests *(3 points)*
   * Given what you know about the type of data these injury scores are, and the resources provided below, decide on an appropriate hypothesis test and apply it to the data for each sex.
-3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
+3. Write 1-3 paragraphs *(2 points)*
+  * stating the analysis question (original question posed by the professor for this data file/analysis)
+  * explaining the analysis that was done
+  * explaining the results you observe
+  * explaining how the analysis and results answer the original question posed by the professor (for this data file/analysis)
 
 #### Helpful Resources
 
@@ -241,9 +272,14 @@ You won't need to do any tidying for this analysis.
 * [t-test and Wilcoxon-rank-sum](https://data.library.virginia.edu/the-wilcoxon-rank-sum-test/)
 * [mann whitney and wilcoxon-rank sum 1](http://www.r-tutor.com/elementary-statistics/non-parametric-methods/mann-whitney-wilcoxon-test)
 * [mann whitney and wilcoxon-rank sum 2](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html)
+
+##### Communication
+* [Jeff Leek -- Advanced Data Science](http://jtleek.com/ads2020/week-9.html#week-9-learning-objectives)
+
+
 --------------------------------------------------------------------------------
 
-### Analysis 3 (7 Possible points)
+### Analysis 3 (9 Possible points)
 
 #### File with data
 
@@ -310,12 +346,12 @@ Aesthetics
 
 #### Steps of analysis
 
-1. Make a plot of the data using the new longer dataframe *(2 points)*
+1. Make a plot of the data using the new longer dataframe *(3 points)*
   * In `aes` for `ggplot`, include `x`, `y`, and `group` arguments. The `group` argument should point to the `X` or proband ID column so that `ggplot` knows which Y values go together.
   * `+ geom_line()` will draw the lines
   * `+ geom_point()` will draw the points (if you want; this isn't necessary)
   * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
-2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(3 points)*
+2. Decide on a hypothesis test, check its assumptions for both conditions of data, and perform hypothesis test(s) *(4 points)*
   * For each condition....
     * if the assumptions are met
       * perform hypothesis test
@@ -325,7 +361,11 @@ Aesthetics
       * re-plot/repeat step 1 with data without outlier
       * re-check assumptions on data without outlier
       * perform hypothesis test
-3. Write a paragraph or two explaining the analysis that was done and the results you observe *(2 points)*
+3. Write 1-3 paragraphs *(2 points)*
+  * stating the analysis question (original question posed by the professor for this data file/analysis)
+  * explaining the analysis that was done
+  * explaining the results you observe
+  * explaining how the analysis and results answer the original question posed by the professor (for this data file/analysis)
 
 #### Helpful Resources
 
@@ -351,7 +391,44 @@ Aesthetics
 * [ggplot Q-Q plots](https://ggplot2.tidyverse.org/reference/geom_qq.html)
 * [base R Q-Q plots](https://www.dummies.com/programming/r/how-to-use-quantile-plots-to-check-data-normality-in-r/)
 * [Shapiro-Wilk tests](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/shapiro.test.html)
+* [F-test](https://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm)
+* [F-test in R](http://www.sthda.com/english/wiki/f-test-compare-two-variances-in-r)
+* [overview of tests for variance -- minitab](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/modeling-statistics/anova/supporting-topics/basics/understanding-test-for-equal-variances/)
 
 ##### Outliers
 * [Outliers in R](https://statsandr.com/blog/outliers-detection-in-r/)
 * [Outliers in GraphPad](https://www.graphpad.com/guides/prism/latest/statistics/stat_how_it_works_rout_method.htm)
+
+##### Communication
+* [Jeff Leek -- Advanced Data Science](http://jtleek.com/ads2020/week-9.html#week-9-learning-objectives)
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+## Project 4
+
+For each of the 3 analyses from Project 3, you will compare and contrast your question, analysis, & results to those in the original study. Please comment on each of the following prompts for each of the analyses:
+* How do the study questions compare? (e.g., are they the same, are they different?)
+  * If different
+    * how are they different, specifically?
+    * how might the difference impact comparing results from your analysis and the original analysis? (will it impact comparison at all?)
+* Are there differences in my analysis compared to the original analysis?  
+  * If yes: what (about the study questions or data) motivated the differences? (e.g., a difference in the posed study question, a difference in hypothesis test used due to __ (fill in the blank))
+  * If no: what (about the study question or data) motivated you to use the analysis that you did and does this seem to be the same motivation the original authors had?
+* Compare the results, interpretation and answers to study questions (keeping in mind that the study questions or analysis steps may have differed).
+  * If the study question and analysis match between your analysis and the original analysis...
+    * How do the results, interpretation, or the answers to study questions compare? (e.g., are they same, are they similar, are they different? **did you replicate their findings?**)
+    * If you didn't replicate their findings, why not?
+  * If the study question, but not the analysis, match between your analysis and the original analysis...
+    * How are the results, interpretations, answers similar? How are they different?
+  * If the study question did not, but the analysis did, match between your analysis and the original analysis ....
+    * How did the differences in the study question not lead to differences in the analysis?
+    * Are there differences in the results or interpretation or answers to the question?
+  * If neither the study question nor the analysis matched...
+    * Are there any similarities at all in the results, interpreation, or answers? If so, what?
+
+
+| Analysis `#` from Project 3 | File from Project 3 | Corresponding Figure | Corresponding Results section |
+|:---------------------------:|:-------------------:|:--------------------:|:-----------------------------:|
+| Analysis 1                  | `data_conc_prop.csv`| Figure 3             | 3.3                           |
+| Analysis 2                  | `data_score.csv`    | Figure 5             | 3.5                           |
+| Analysis 3                  | `data_pre_post.csv` | Figure 1             | 3.1                           |
