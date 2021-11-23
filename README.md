@@ -51,7 +51,7 @@ Project 4 must be individual work.
 ### Grading and assessment strategy
 
 * Project 4 will be assessed only by the professor and based solely on the uploads to GitHub or Canvas
-* Project 4 is worth 10 points.  
+* Project 4 is worth 10 points. The total number of available points is greater than 10, but the project will be graded out of 10.   
 
 ## Project 3 Questions
 
@@ -407,14 +407,14 @@ Aesthetics
 ## Project 4
 
 For each of the 3 analyses from Project 3, you will compare and contrast your question, analysis, & results to those in the original study. Please comment on each of the following prompts for each of the analyses:
-* How do the study questions compare? (e.g., are they the same, are they different?)
+* How do the study questions compare? (e.g., are they the same, are they different?) *(1.25 pt for each analysis)*
   * If different
     * how are they different, specifically?
     * how might the difference impact comparing results from your analysis and the original analysis? (will it impact comparison at all?)
-* Are there differences in my analysis compared to the original analysis?  
+* Are there differences in my analysis compared to the original analysis? *(1.25 pt for each analysis)*  
   * If yes: what (about the study questions or data) motivated the differences? (e.g., a difference in the posed study question, a difference in hypothesis test used due to __ (fill in the blank))
   * If no: what (about the study question or data) motivated you to use the analysis that you did and does this seem to be the same motivation the original authors had?
-* Compare the results, interpretation and answers to study questions (keeping in mind that the study questions or analysis steps may have differed).
+* Compare the results, interpretation and answers to study questions (keeping in mind that the study questions or analysis steps may have differed). *(1.25 pt for each analysis)*
   * If the study question and analysis match between your analysis and the original analysis...
     * How do the results, interpretation, or the answers to study questions compare? (e.g., are they same, are they similar, are they different? **did you replicate their findings?**)
     * If you didn't replicate their findings, why not?
