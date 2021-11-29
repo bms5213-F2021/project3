@@ -111,7 +111,7 @@ Aesthetics
   * You can manually make different plots but combine them as subpanels in the same plot (packages like `patchwork` are great for this)
   * You can use `+ facet_wrap(Sex~Condition)` in order for ggplot to automatically make subpanels for you.
 * The plot should have relevant axis labels and title.
-* The plot *does not need* to have asterisks, but by using the `stat_cor()` function from the `ggpubr` package, it will communicate the results of Pearson R correlation tests.
+* The plot *does not need* to have asterisks, but by using the `stat_cor()` function from the `ggpubr` package, it will communicate the results of correlation tests.
 
 #### General outline of how you'll want to tidy the data
 
@@ -125,9 +125,9 @@ In order to check the assumptions of approximate normality, you may need to chec
   * `geom_point()` will scatter the points
   * `geom_smooth()` can be used to draw a straight line (but this isn't necessary); If used, consider setting the `method` and `se` arguments to have a linear model, and to turn off the shading respectively
 2. Find the correlation between the variables  *(3 points)*
-  * Check the assumptions for Pearson R correlation for each subplot. (Primarily, are both the variables being considered approximately normal?)
-    * If you believe that multiple pieces of evidence support that each variable being considered is approximately normal (or can be cleaned/transformed with a natural logarithm to be approximately normal), proceed with the correlation using Pearson's R, and be sure to justify your choices in your write up in step 3
-    * If you don't think that multiple pieces of evidence support the assumption of approximate normality, then proceed with the correlation using Kendall's Tau.  
+  * Check the assumptions for Pearson R correlation for each subplot. (Primarily, are both the variables being considered together approximately bivariate normal?)
+    * If you believe this assumption is satisfied, proceed with the correlation using Pearson's R, and be sure to justify your choices in your write up in step 3
+    * If you don't think that the evidence supports the assumption of approximate bivariate normality, then proceed with the correlation using Kendall's Tau or Spearman's Rho (your choice).  
   * You can run the correlation manually using the `cor()` and `cor.test()` functions for each subplot and add annotations to plots (not recommended) or you can use `+ stat_cor()` (a function from the `ggpubr` package) (recommended)
 3. Write 1-3 paragraphs *(2 points)*
   * stating the analysis question (original question posed by the professor for this data file/analysis)
@@ -140,6 +140,7 @@ In order to check the assumptions of approximate normality, you may need to chec
 ##### R Packages you'll need
 * `ggplot2`
 * `ggpubr`
+* `mvnormtest`
 
 ##### R packages you may want
 * `patchwork`
@@ -152,10 +153,7 @@ In order to check the assumptions of approximate normality, you may need to chec
 * [patchwork package](https://patchwork.data-imaginist.com/index.html)
 
 ##### Assessing Normality
-* [general info](https://www.sheffield.ac.uk/polopoly_fs/1.885202!/file/95_Normality_Check.pdf)
-* [ggplot Q-Q plots](https://ggplot2.tidyverse.org/reference/geom_qq.html)
-* [base R Q-Q plots](https://www.dummies.com/programming/r/how-to-use-quantile-plots-to-check-data-normality-in-r/)
-* [Shapiro-Wilk tests](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/shapiro.test.html)
+* [bivariate normal](https://universeofdatascience.com/shapiro-wilk-test-for-univariate-and-multivariate-normality-in-r/)
 
 #### Types of Correlation metrics
 * [R, tau, and rho](http://www.sthda.com/english/wiki/wiki.php?id_contents=7307)
