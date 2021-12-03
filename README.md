@@ -10,7 +10,7 @@ The goal of project 4 is to compare and contrast the analysis choices that you m
 
 ## Logistics
 
-**Due: Dec 11, 11 AM CDT**
+**Due: Dec 14, 6 PM CDT**
 
 ### Project 3
 #### Individual or Group Work
