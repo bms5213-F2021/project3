@@ -241,8 +241,9 @@ You won't need to do any tidying for this analysis.
 1. Plot *(3 points)*
   * In `aes` for `ggplot`, include `x` and `y` arguments.
   * the `geom_point()` function will add points for each score
-  * the `geom_jitter(width=0.1)` function can be used to separate the points out within each condition
-  * `facet_wrap` would be helpful to separate the conditions (Control and Stress) into subpanels
+  * the `geom_jitter(width=0.2, height=0)` function can be used to separate the points out within each condition
+   * the `geom_jitter()` function accepts both a width and a height argument. the origially provided command `geom_jitter(width=0.1)` will add random noise to both the x- and y- coordinate/positions of each point. If you want your plot to show the exact scores (since they're not continuous, but actually ordinal), you can use  the height=0 argument to make sure that no random noise is added to the y- coordinate/position   
+  * `facet_wrap` would be helpful to separate the sexes (female and male) into differet subpanels with each subpanel still having both conditions 
 2. Hypothesis Tests *(3 points)*
   * Given what you know about the type of data these injury scores are, and the resources provided below, decide on an appropriate hypothesis test and apply it to the data for each sex.
 3. Write 1-3 paragraphs *(2 points)*
